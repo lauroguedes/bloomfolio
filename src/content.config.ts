@@ -38,8 +38,8 @@ const projects = defineCollection({
     endDate: z.coerce.date().optional(),
     skills: z.array(z.string()),
     demoLink: z.string().url().optional(),
-    sourceLink: z.string().url().optional(),
-  }),
+    sourceLink: z.string().url().optional()
+    }),
 });
 
 // Hackathons collection

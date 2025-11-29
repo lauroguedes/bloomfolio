@@ -1,8 +1,8 @@
 ---
-title: "Screencial"
+title: "Dashboard Ventas Blinkit"
 description: "Análisis de ventas en puntos Blinkit. Permite visualizar ventas históricas, desempeño por tipo de producto, contenido nutricional y segmentación de establecimientos."
 image: "https://api.dicebear.com/9.x/glass/svg?seed=Alexander"
-startDate: "2024-12-07"
+startDate: "2024-12-01"
 category: "bi"
 skills: ["Power BI", "DAX", "Data Modeling", "ETL", "Business Intelligence"]
 sourceLink: "https://github.com/lauroguedes/mary-ui-starter-kit"
@@ -14,7 +14,7 @@ highlights:
   - "Desempeño por tamaño y tipo de establecimiento"
 ---
 
-## Project Overview
+## Descripción general del proyecto
 
 El **Dashboard de Ventas Blinkit** es una solución de analítica desarrollada en Power BI que centraliza la información comercial de los puntos Blinkit. Permite a los responsables de negocio visualizar métricas clave y entender el comportamiento de ventas, productos y establecimientos.
 

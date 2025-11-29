@@ -107,7 +107,7 @@ export const siteConfig: SiteConfig = {
     linkedin: "https://linkedin.com/in/luismiguelro",
     twitter: "https://x.com/luismiguelro_",
     instagram: "https://instagram.com/luismiguelro_",
-    email: "luismiguel@.com"
+    email: "luismiguelro@.gmail.com"
   },
   enableThemeSelector: true,
   extraLinks: {

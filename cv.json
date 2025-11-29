@@ -1,0 +1,296 @@
+{
+  "basics": {
+    "name": "Luis Miguel Rodriguez Osorio",
+    "label": "Ingeniero de Software (9° semestre) | Analista de Datos",
+    "image": "/me.webp",
+    "email": "luismiguelro.dev@gmail.com",
+    "url": "https://www.linkedin.com/in/luismiguelro/",
+    "summary": "Ingeniero de Software en noveno semestre, especializado en analítica de datos y reportes con Power BI y Microsoft Fabric. Experiencia en optimización de la toma de decisiones y aumento de rentabilidad en empresas del sector de combustibles y lubricantes.",
+    "location": {
+      "city": "Medellín",
+      "region": "Colombia"
+    },
+     "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "luismiguelro",
+        "url": "https://www.linkedin.com/in/luismiguelro/"
+      },
+      {
+        "network": "instagram",
+        "username": "luismiguelro",
+        "url": "https://www.Instagram.com/luismiguelro_/"
+      },
+      {
+        "network": "X",
+        "username": "luismiguelro_",
+        "url": "https://x.com/luismiguelro_"
+      },
+      {
+        "network": "GitHub",
+        "username": "luismiguelro_",
+        "url": "https://github.com/luismiguelro"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "Ribisoft S.A.S",
+      "url": "https://ribisoft.com.co/",
+      "position": "Analista de Datos",
+      "startDate": "2025-07",
+      "endDate": null,
+      "summary": "Diseño y optimización de consultas y vistas SQL para mejorar el rendimiento de los reportes. Creación y mantenimiento de dashboards interactivos en Power BI para el seguimiento de indicadores clave. Automatización de procesos de carga y transformación de datos con Python. Validación y aseguramiento de la calidad de datos provenientes de múltiples fuentes. Colaboración interdepartamental para apoyar la toma de decisiones basadas en datos.",
+      "highlights": [
+        
+      ]
+    },
+    {
+      "name": "Zeuss S.A.S",
+      "url": "https://zeuss.com.co/",
+      "position": "Analista de Datos / Auxiliar de Soporte",
+      "startDate": "2024-03",
+      "endDate": "2025-07",
+      "summary": "Desarrollo de dashboards estratégicos en Power BI para análisis de rentabilidad, ventas históricas y predicciones. Integración de datos financieros y operativos desde ERP a SQL Server. Limpieza y transformación de datos con Python y Microsoft Fabric. Capacitación de usuarios en dashboards, reduciendo solicitudes de soporte y fortaleciendo la autonomía de equipos.",
+      "highlights": [
+        "Implementación de más de 50 dashboards para análisis empresarial",
+        "Automatización de procesos de análisis de datos con Python",
+        "Capacitación de usuarios y reducción de soporte recurrente"
+      ]
+    },
+    {
+      "name": "Zeuss S.A.S",
+      "url": "https://zeuss.com.co/",
+      "position": "Prácticas Tecnología en Sistemas / Auxiliar de Soporte",
+      "startDate": "2023-06",
+      "endDate": "2023-12",
+      "summary": "Administración de Office 365 y Exchange, gestión de cuentas y políticas de seguridad. Manejo de DMS para gestión documental y generación de reportes SQL Server. Supervisión de usuarios y permisos en Active Directory. Inventario y mantenimiento de equipos tecnológicos.",
+      "highlights": [
+        "Implementación de automatizaciones en gestión de usuarios e inventario",
+        "Reducción de tiempos de respuesta y errores manuales"
+      ]
+    },
+    {
+      "name": "Asis Kitchen",
+      "url": "https://www.tripadvisor.co/Hotel_Review-g1584018-d25552704-Reviews-Asis_Glamping-Guarne_Antioquia_Department.html",
+      "position": "Auxiliar Administrativo",
+      "startDate": "2022-02",
+      "endDate": "2022-08",
+      "summary": "Desarrollo y manejo de inventarios en cocina y bodega. Gestión de pedidos con aplicaciones de domicilio. Ejecución de funciones en Google Sites para organización interna. Atención al cliente y gestión de despacho y recepción de pedidos.",
+      "highlights": [
+        "Implementación de control de inventarios en Excel",
+        "Integración de aplicaciones de domicilio para agilizar procesos"
+      ]
+    }
+  ],
+   "volunteer": [{
+    "organization": "Organization",
+    "position": "Volunteer",
+    "url": "https://organization.com/",
+    "startDate": "2012-01-01",
+    "endDate": "2013-01-01",
+    "summary": "Description…",
+    "highlights": [
+      "Awarded 'Volunteer of the Month'"
+    ]
+  }],
+  "skills": [
+    {
+      "name": "PowerBI",
+      "keywords": ["Power BI"]
+    },
+    {
+      "name": "Fabric",
+      "keywords": ["Fabric"]
+    },
+    {
+      "name": "Python",
+      "keywords": ["Python"]
+    },
+    {
+      "name": "SQLServer",
+      "level": "Avanzado",
+      "keywords": [
+        "Bases de Datos", "SQL", "Almacenamiento de Datos", "Backend"
+      ]
+    },
+     {
+      "name": "HTML",
+      "keywords": [
+        "Desarrollo Web", "Frontend"
+      ]
+    },
+    {
+      "name": "CSS",
+      "keywords": [
+        "Desarrollo Web", "Frontend", "Diseño Responsive"
+      ]
+    },
+    {
+      "name": "JavaScript",
+      "keywords": [
+        "Desarrollo Web", "Frontend", "Backend", "Fullstack"
+      ]
+    },
+    {
+      "name": "Tailwind",
+      "keywords": [
+        "Desarrollo Web", "Frontend", "CSS Framework", "Diseño Responsive"
+      ]
+    },
+    {
+      "name": "Git",
+      "level": "Avanzado",
+      "keywords": [
+        "Control de Versiones", "Colaboración", "Código Fuente"
+      ]
+    },
+    {
+      "name": "GitHub",
+      "level": "Avanzado",
+      "keywords": [
+        "Control de Versiones", "Colaboración", "Código Fuente", "Git"
+      ]
+    },
+    {
+      "name": "React",
+      "keywords": [
+        "Desarrollo Web", "Frontend", "JavaScript Library", "UI"
+      ]
+    }
+
+  ],
+  "languages": [
+    {
+      "language": "Español",
+      "fluency": "Nativo"
+    },
+    {
+      "language": "Inglés",
+      "fluency": "B1"
+    }
+  ],
+  "education": [
+    {
+      "institution": "Tecnológico de Antioquia",
+      "area": "Ingeniería de Software",
+      "studyType": "Pregrado",
+      "startDate": "2024",
+      "endDate": "2026"
+    },
+    {
+      "institution": "Tecnológico de Antioquia",
+      "area": "Tecnología en Sistemas",
+      "studyType": "Tecnólogo",
+      "startDate": "2023",
+      "endDate": "2023"
+    },
+    {
+      "institution": "Tecnológico de Antioquia",
+      "area": "Técnica Profesional en Sistemas",
+      "studyType": "Técnico",
+      "startDate": "2021",
+      "endDate": "2022"
+    }
+  ],
+  "projects": [
+    {
+"name": "Dashboard Ventas Blinkit",
+"iframe": "https://app.powerbi.com/view?r=eyJrIjoiMzgwZWE1NzgtYjZmZS00NTE4LWE2ZmQtNTQzNzc1NjBlYmFlIiwidCI6IjUwY2Q4OTgxLTE0NDQtNGQyNy05ZTg1LTFkMDc4NTYwN2MyMiIsImMiOjR9",
+"category": "bi",
+"github": "",
+"isActive": true,
+"image": ["/bi1.png"],
+"description": "Análisis de ventas en puntos Blinkit. Permite visualizar ventas históricas, desempeño por tipo de producto, contenido nutricional y segmentación de establecimientos.",
+"highlights": [
+"Ventas totales superiores a $1,200 millones",
+"Más de 8,500 ítems analizados",
+"Desempeño por tamaño y tipo de establecimiento"
+]
+      
+    },
+    {
+      
+      "name": "Dashboard Ventas Super Store",
+"iframe": "https://app.powerbi.com/view?r=eyJrIjoiMTBhNTIwNGUtNGM1Zi00OTIwLTg4MjItNzI1YTgzYWY0NjhmIiwidCI6IjUwY2Q4OTgxLTE0NDQtNGQyNy05ZTg1LTFkMDc4NTYwN2MyMiIsImMiOjR9&pageName=72d161ffe5603c0da051",      "category":"bi",
+      "github": "",
+      "isActive": true,
+      "image": ["/bi2.png"],
+"description": "Análisis de ventas Super Store muestra ventas y ganancias totales, análisis por método de pago, segmento de clientes, región y categoría de producto.",
+"highlights": [
+"Ventas totales: 1,6 millones",
+"Ganancia total: 175,3 mil",
+"Más de 22 mil órdenes procesadas",
+"Visualización geográfica de ventas por estado"
+      ]
+      
+    },
+    
+    {
+      "name": "Movie API",
+      "category":"desarrollo",
+      "description": "API desarrollada con Spring Boot y desplegada en fly.io. Consume información sobre películas y añade reseñas.",
+      "highlights": [
+        "Desarrollada con Spring Boot",
+        "Desplegada en fly.io",
+        "Permite consumir datos y agregar reseñas"
+      ],
+      "github": "https://github.com/luismiguelro/movie-api"
+    },
+    {
+      "name": "Movie Gold",
+      "category":"desarrollo",
+      "description": "Aplicación web construida con React que permite explorar una amplia colección de películas utilizando Movie API.",
+      "highlights": [
+        "Desarrollada con React",
+        "Consume Movie API",
+        "Enlace en fly"
+      ],
+      "github": "https://github.com/luismiguelro/movie-gold"
+    },
+    {
+      "name": "Skull Game",
+      "category":"desarrollo",
+      "description": "Juego en navegador desarrollado con HTML5, canvas y arreglos bidimensionales.",
+      "highlights": [
+        "Utiliza HTML5 Canvas",
+        "Juego en navegador",
+        "Implementación con JavaScript"
+      ],
+      "github": "https://taller-videojuego-js.vercel.app/"
+    },
+  {
+    "name": "Limpieza y Transformación",
+    "category": "analisis",
+    "isActive": true,
+    "description": "Estandarización y limpieza de un dataset de Netflix para análisis posterior.",
+    "highlights": [
+      "Eliminación de duplicados y columnas innecesarias",
+      "Conversión de tipos y normalización de nombres"
+    ],
+    "github": "https://github.com/luismiguelro/portfolio_projects_data_analyst/tree/main/1_Limpieza_y_Transformacion"
+  },
+  {
+    "name": "Limpieza y Visualización de Datos",
+    "category": "analisis",
+    "isActive": true,
+    "description": "Análisis de lanzamientos espaciales durante la Guerra Fría con foco en limpieza y visualización.",
+    "highlights": [
+      "Estandarización de datos históricos",
+      "Gráficos sobre lanzamientos y países"
+    ],
+    "github": "https://github.com/luismiguelro/portfolio_projects_data_analyst/tree/main/2_Limpieza_y_Visualizacion_Datos"
+  },
+  {
+    "name": "Ciencia de Datos",
+    "category": "analisis",
+    "isActive": true,
+    "description": "Predicción de precios de vuelos con modelos de Machine Learning.",
+    "highlights": [
+      "Modelos: Regresión Lineal, KNN, XGBoost",
+      "Evaluación con MAE y R²"
+    ],
+    "github": "https://github.com/luismiguelro/portfolio_projects_data_analyst/tree/main/4_Ciencia_De_Datos"
+  }
+]
+}
