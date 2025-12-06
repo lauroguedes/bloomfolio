@@ -4,10 +4,10 @@ import ProjectCard from "./ProjectCard.astro";
 
 const projectEntries = await getCollection("projects");
 
-// Sort by start date, most recent first
-const sortedProjects = projectEntries.sort(
-  (a, b) => b.data.startDate.getTime() - a.data.startDate.getTime()
-);
+// Ordenar por startDate descendente y tomar solo los 3 más recientes
+const sortedProjects = projectEntries
+  .sort((a, b) => b.data.startDate.getTime() - a.data.startDate.getTime())
+  .slice(0, 3);
 ---
 
 <section id="projects" class="py-20 px-4 bg-base-200">
@@ -15,7 +15,7 @@ const sortedProjects = projectEntries.sort(
     <div class="text-center mb-12">
       <h2 class="text-4xl font-bold mb-4">Últimos Proyectos</h2>
       <p class="text-lg text-base-content/70">
-Proyectos enfocados en análisis y visualización de datos. Aquí muestro algunos de mis trabajos más relevantes.
+        Proyectos enfocados en análisis y visualización de datos. Aquí muestro algunos de mis trabajos más relevantes.
       </p>
     </div>
 

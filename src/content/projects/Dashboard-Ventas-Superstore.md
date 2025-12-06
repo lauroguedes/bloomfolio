@@ -1,16 +1,16 @@
 ---
-title: "Dashboard Ventas Blinkit"
-description: "Análisis de ventas en puntos Blinkit. Permite visualizar ventas históricas, desempeño por tipo de producto, contenido nutricional y segmentación de establecimientos."
-image: "./blinkit.png"
-startDate: "2025-11-01"
+title: "Dashboard Ventas Super Store"
+description: "Análisis de ventas Super Store muestra ventas y ganancias totales, análisis por método de pago, segmento de clientes, región y categoría de producto."
+image: "./superstore.png"
+startDate: "2025-12-01T12:00:00"
 category: "bi"
 skills: ["Power BI", "DAX", "Data Modeling", "ETL", "Business Intelligence"]
-demoLink: "https://app.powerbi.com/view?r=eyJrIjoiMzgwZWE1NzgtYjZmZS00NTE4LWE2ZmQtNTQzNzc1NjBlYmFlIiwidCI6IjUwY2Q4OTgxLTE0NDQtNGQyNy05ZTg1LTFkMDc4NTYwN2MyMiIsImMiOjR9"
+demoLink: "https://app.powerbi.com/view?r=eyJrIjoiMTBhNTIwNGUtNGM1Zi00OTIwLTg4MjItNzI1YTgzYWY0NjhmIiwidCI6IjUwY2Q4OTgxLTE0NDQtNGQyNy05ZTg1LTFkMDc4NTYwN2MyMiIsImMiOjR9&pageName=72d161ffe5603c0da051"
 isActive: true
 highlights:
-  - "Ventas totales superiores a $1,200 millones"
-  - "Más de 8,500 ítems analizados"
-  - "Desempeño por tamaño y tipo de establecimiento"
+  - "Ventas totales: 1,6 millones"
+  - "Más de 22 mil órdenes procesadas"
+  - "Visualización geográfica de ventas por estado"
 ---
 
 ## Descripción general del proyecto

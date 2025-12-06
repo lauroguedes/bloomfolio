@@ -6,7 +6,7 @@ startDate: "2024-12-07"
 category: "bi"
 skills: ["Power BI", "DAX", "Data Modeling", "ETL", "Business Intelligence"]
 sourceLink: "https://github.com/lauroguedes/mary-ui-starter-kit"
-demoLink: "https://app.powerbi.com/view?r=eyJrIjoiMzgwZWE1NzgtYjZmZS00NTE4LWE2ZmQtNTQzNzc1NjBlYmFlIiwidCI6IjUwY2Q4OTgxLTE0NDQtNGQyNy05ZTg1LTFkMDc4NTYwN2MyMiIsImMiOjR9"
+demoLink: "https://api.dicebear.com/9.x/glass/svg?seed=Alexander"
 isActive: true
 highlights:
   - "Ventas totales superiores a $1,200 millones"
