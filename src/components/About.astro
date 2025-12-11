@@ -1,5 +1,5 @@
 ---
-import { Plus } from "@lucide/astro";
+import { Linkedin, Mail } from "@lucide/astro";
 
 interface Props {
   title: string;
@@ -22,17 +22,27 @@ const { title, photo, Content } = Astro.props;
       }
       <div class="card-body">
         <h2 class="card-title text-2xl">{title}</h2>
-        <p class="text-lg">
+        <div class="text-lg">
           <Content />
-        </p>
-        <div class="card-actions justify-end">
-          <div class="tooltip" data-tip="Más sobre mí">
+        </div>
+        <div class="card-actions justify-end gap-2 mt-4">
+          <div class="tooltip" data-tip="Ver perfil en LinkedIn">
             <a
               href="https://linkedin.com/in/luismiguelro"
               target="_blank"
-              class="btn btn-primary"
+              class="btn btn-primary btn-sm gap-2"
             >
-              <Plus class="size-5" />
+              <Linkedin class="size-4" />
+              <span>LinkedIn</span>
+            </a>
+          </div>
+          <div class="tooltip" data-tip="Enviarme un correo">
+            <a
+              href="mailto:luismiguelro.dev@gmail.com"
+              class="btn btn-outline btn-sm gap-2"
+            >
+              <Mail class="size-4" />
+              <span>Email</span>
             </a>
           </div>
         </div>
