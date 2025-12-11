@@ -49,16 +49,25 @@ function formatPeriod(startDate: Date, endDate?: Date) {
     <div class="card-actions justify-end mt-4 gap-2">
 
       {
-  project.data.demoLink && (
-    <a
-      class="btn btn-sm btn-soft gap-1"
-      onclick={`document.getElementById('demo-modal-${project.id}').classList.remove('hidden')`}
-    >
-       <ExternalLink class="size-4" />
+        project.data.demoLink && (
+          <a
+            class="btn btn-sm btn-soft gap-1"
+            onclick={`
+              const modal = document.getElementById('demo-modal-${project.id}');
+              if (!modal) return;
+              const iframe = modal.querySelector('iframe');
+              if (iframe && !iframe.src) {
+                iframe.src = '${project.data.demoLink}';
+              }
+              modal.classList.remove('hidden');
+              document.body.style.overflow = 'hidden';
+            `}
+          >
+            <ExternalLink class="size-4" />
             Demo
-    </a>
-  )
-}
+          </a>
+        )
+      }
 
       {
         project.data.sourceLink && (
@@ -117,8 +126,10 @@ function formatPeriod(startDate: Date, endDate?: Date) {
     <!-- Contenedor responsive del iframe -->
     <div class="w-full h-[60vh] md:aspect-video md:h-auto rounded-lg overflow-hidden">
       <iframe
-        src={project.data.demoLink}
         class="w-full h-full"
+        title={`Demo del proyecto ${project.data.title}`}
+        sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+        referrerpolicy="no-referrer-when-downgrade"
         allowfullscreen
         loading="lazy"
       ></iframe>

@@ -1,90 +1,19 @@
 ---
-import { getCollection } from "astro:content";
-
-const hackathonEntries = await getCollection("hackathons");
-
-// Sort by start date, most recent first
-const sortedHackathons = hackathonEntries.sort(
-  (a, b) => b.data.startDate.getTime() - a.data.startDate.getTime()
-);
-
-function formatPeriod(startDate: Date, endDate?: Date) {
-  const options: Intl.DateTimeFormatOptions = {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  };
-  const start = startDate.toLocaleDateString("en-US", options);
-
-  if (endDate && endDate.getTime() !== startDate.getTime()) {
-    const end = endDate.toLocaleDateString("en-US", options);
-    return `${start} - ${end}`;
-  }
-
-  return start;
-}
+import Spotify from "./Spotify.astro";
 ---
 
 <section id="hackathons" class="py-20 px-4">
   <div class="max-w-4xl mx-auto">
     <div class="text-center mb-12">
-      <h2 class="text-4xl font-bold mb-4">I like building things</h2>
+      <h2 class="text-4xl font-bold mb-4">Lo que escucho mientras construyo cosas</h2>
       <p class="text-lg text-base-content/70">
-        During my time in university, I attended multiple hackathons. People
-        from around the country would come together and build incredible things
-        in 2-3 days. It was eye-opening to see the endless possibilities brought
-        to life by a group of motivated and passionate individuals.
+        Una pequeña selección de música y playlists que suelo escuchar mientras
+        trabajo en proyectos, dashboards y desarrollo.
       </p>
     </div>
 
-    <div class="space-y-6">
-      {
-        sortedHackathons.map((hackathon) => (
-          <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow">
-            <div class="card-body">
-              <div class="flex items-start gap-4">
-                {hackathon.data.logo && (
-                  <div class="avatar flex-shrink-0">
-                    <div class="w-16 h-16 rounded">
-                      <img
-                        src={hackathon.data.logo}
-                        alt={hackathon.data.title}
-                      />
-                    </div>
-                  </div>
-                )}
-                <div class="flex-1">
-                  <time class="text-sm text-base-content/60">
-                    {formatPeriod(
-                      hackathon.data.startDate,
-                      hackathon.data.endDate
-                    )}
-                  </time>
-                  <h3 class="card-title mt-1">{hackathon.data.title}</h3>
-                  <p class="text-sm text-primary font-semibold">
-                    {hackathon.data.location}
-                  </p>
-                  <p class="text-base-content/80 mt-3">
-                    {hackathon.data.description}
-                  </p>
-                  {hackathon.data.sourceLink && (
-                    <div class="card-actions mt-4">
-                      <a
-                        href={hackathon.data.sourceLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="btn btn-sm btn-outline btn-primary"
-                      >
-                        View Project
-                      </a>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-          </div>
-        ))
-      }
+    <div class="max-w-2xl mx-auto">
+      <Spotify url="https://open.spotify.com/track/0y5unxPEvpulXKPgw4StQW?si=b9c1f1b16f3540ac" />
     </div>
   </div>
 </section>

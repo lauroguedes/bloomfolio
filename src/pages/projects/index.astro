@@ -24,6 +24,37 @@ const sortedProjects = projects.sort(
       </p>
     </div>
 
+    <div class="flex flex-wrap justify-center gap-3 mb-10">
+      <button
+        type="button"
+        class="btn btn-sm btn-outline btn-primary"
+        data-project-filter="all"
+      >
+        Todos
+      </button>
+      <button
+        type="button"
+        class="btn btn-sm btn-outline"
+        data-project-filter="bi"
+      >
+        BI
+      </button>
+      <button
+        type="button"
+        class="btn btn-sm btn-outline"
+        data-project-filter="analisis de datos"
+      >
+        Análisis de Datos
+      </button>
+      <button
+        type="button"
+        class="btn btn-sm btn-outline"
+        data-project-filter="desarrollo"
+      >
+        Desarrollo
+      </button>
+    </div>
+
     <!-- Back to Home -->
     <div class="mb-8">
       <a href="/" class="btn btn-ghost btn-sm">
@@ -55,10 +86,41 @@ const sortedProjects = projects.sort(
       ) : (
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {sortedProjects.map((project) => (
-            <ProjectCard project={project} />
+            <div
+              data-project-category={project.data.category}
+            >
+              <ProjectCard project={project} />
+            </div>
           ))}
         </div>
       )
     }
+
+    <script>
+      if (typeof window !== "undefined") {
+        const buttons = document.querySelectorAll('[data-project-filter]');
+        const cards = document.querySelectorAll('[data-project-category]');
+
+        buttons.forEach((button) => {
+          button.addEventListener('click', () => {
+            const filter = button.getAttribute('data-project-filter');
+
+            buttons.forEach((btn) => {
+              btn.classList.remove('btn-primary');
+            });
+            button.classList.add('btn-primary');
+
+            cards.forEach((card) => {
+              const category = card.getAttribute('data-project-category');
+              if (filter === 'all' || category === filter) {
+                card.classList.remove('hidden');
+              } else {
+                card.classList.add('hidden');
+              }
+            });
+          });
+        });
+      }
+    </script>
   </main>
 </Layout>

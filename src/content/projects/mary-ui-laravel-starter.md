@@ -3,6 +3,7 @@ title: "Mary UI Laravel Starter Kit"
 description: "A contemporary, production-ready Laravel starter kit with integrated Livewire Volt and Mary UI components. Designed to expedite web application development with pre-built authentication, user administration, and developer-friendly tooling."
 image: "https://api.dicebear.com/9.x/glass/svg?seed=Alexander"
 startDate: "2024-12-07"
+category: "desarrollo"
 skills: ["Laravel", "Livewire", "Mary UI", "DaisyUI", "Tailwind CSS", "Pest"]
 sourceLink: "https://github.com/lauroguedes/mary-ui-starter-kit"
 demoLink: "https://github.com/lauroguedes/mary-ui-starter-kit"

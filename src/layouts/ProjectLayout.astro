@@ -122,9 +122,18 @@ function calculateDuration(startDate: Date, endDate?: Date) {
           <div class="flex flex-wrap gap-3 mb-6">
             {demoLink && (
               <a
-              rel="noopener noreferrer"
+                rel="noopener noreferrer"
                 class="btn btn-primary gap-2"
-                 onclick={`document.getElementById('demo-modal-${demoLink}').classList.remove('hidden')`}
+                onclick={`
+                  const modal = document.getElementById('demo-modal-${demoLink}');
+                  if (!modal) return;
+                  const iframe = modal.querySelector('iframe');
+                  if (iframe && !iframe.src) {
+                    iframe.src = '${demoLink}';
+                  }
+                  modal.classList.remove('hidden');
+                  document.body.style.overflow = 'hidden';
+                `}
               >
                 <ExternalLink class="size-5" />
                 Demo
@@ -215,8 +224,10 @@ function calculateDuration(startDate: Date, endDate?: Date) {
     <!-- Contenedor responsive del iframe -->
     <div class="w-full h-[60vh] md:aspect-video md:h-auto rounded-lg overflow-hidden">
       <iframe
-        src={demoLink}
         class="w-full h-full"
+        title={`Demo del proyecto ${title}`}
+        sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+        referrerpolicy="no-referrer-when-downgrade"
         allowfullscreen
         loading="lazy"
       ></iframe>
