@@ -37,10 +37,10 @@ function formatPeriod(startDate: Date, endDate?: Date) {
     month: "short",
     year: "numeric",
   };
-  const start = startDate.toLocaleDateString("en-US", options);
+  const start = startDate.toLocaleDateString("es-CO", options);
   const end = endDate
-    ? endDate.toLocaleDateString("en-US", options)
-    : "Present";
+    ? endDate.toLocaleDateString("es-CO", options)
+    : "Actual";
   return `${start} - ${end}`;
 }
 
@@ -110,8 +110,8 @@ const entriesWithContent = await Promise.all(
                           class="link link-hover"
                         >
                           {collection === "work"
-                            ? "View Company"
-                            : "View Institution"}
+                            ? "Ver Empresa"
+                            : "Ver Institución"}
                         </a>
                       </div>
                     )}

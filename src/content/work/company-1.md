@@ -1,10 +1,10 @@
 ---
-title: "Tech Corp"
-subtitle: "Senior Full Stack Developer"
-logo: "https://api.dicebear.com/9.x/shapes/svg?seed=Easton"
-startDate: "2021-06-01"
-endDate: "2024-01-01"
-link: "https://example.com"
+title: "Ribisoft S.A.S"
+subtitle: "Analista de Datos"
+logo: "https://api.dicebear.com/9.x/shapes/svg?seed=Ribisoft"
+startDate: "2025-07-28T12:00:00"
+link: "https://ribisoft.com.co/"
 ---
+Diseño y optimización de consultas y vistas SQL, junto con dashboards en Power BI para el seguimiento de indicadores clave del negocio.
 
-Led development of multiple high-impact web applications using React, Node.js, and PostgreSQL. Mentored junior developers and implemented best practices for code quality and testing.
+Automatización de procesos de carga y transformación de datos para mejorar rendimiento y calidad de la información usada en decisiones.
