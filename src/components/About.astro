@@ -29,9 +29,11 @@ const { title, photo, Content, link } = Astro.props;
       }
       <div class="card-body">
         <h2 class="card-title text-2xl">{title}</h2>
-        <p class="text-lg">
+        <article
+          class="prose prose-sm max-w-none prose-a:text-primary prose-a:underline prose-a:hover:opacity-80"
+        >
           <Content />
-        </p>
+        </article>
         {
           link && (
             <div class="card-actions justify-end">

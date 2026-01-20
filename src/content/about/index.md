@@ -3,4 +3,6 @@ title: About Me
 photo: '@assets/about/photo.png'
 link: https://linkedin.com/in/lauroguedes
 ---
-I'm a full-stack developer with a passion for creating beautiful, functional, and user-friendly web applications. With experience in **modern frameworks and technologies**, I love turning ideas into reality through code. When I'm not coding, you can find me **exploring new technologies**, contributing to open source, or enjoying a good cup of coffee ☕.
+My toolkit revolves around the **Laravel and Vue JS** ecosystem. I enjoy crafting everything from robust APIs and full-stack applications to open-source tools like the [Mary UI Laravel Starter Kit](https://github.com/lauroguedes/mary-ui-starter-kit) and [Bloomfolio](https://github.com/lauroguedes/bloomfolio), an Astro portfolio template that's been forked dozens of times.
+
+When I'm not coding, I'm probably exploring AI art, traveling, or listening to 🎸 heavy music way too loud.

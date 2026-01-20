@@ -27,7 +27,9 @@ A modern, customizable portfolio template built with **Astro 5** and **DaisyUI 5
 - 🎭 **Smooth Transitions** - Page transitions using Astro's View Transitions API
 - 📦 **MDX Support** - Enhanced markdown with component imports (Spotify, YouTube, Twitter)
 - 🎯 **Configuration-Driven** - Customize everything through a central config file
-- 🌸 **FAB Flower Menu** - Expandable floating action button for extra links
+- 🌸 **FAB Flower Menu** - Expandable floating action button for extra links (desktop)
+- 📱 **Mobile Dock Navigation** - Bottom navigation bar for mobile devices
+- ⭐ **Featured Projects** - Highlight your best work on the homepage
 - 🎨 **Modern Stack** - Astro 5 + Tailwind CSS 4 + DaisyUI 5 + TypeScript
 - 🔍 **SEO Optimized** - Meta tags, Open Graph, and semantic HTML
 - ♿ **Accessible** - Built with accessibility in mind
@@ -72,80 +74,57 @@ All commands are run from the root of the project:
 
 ## ⚙️ Configuration
 
-All site configuration is centralized in `src/config.ts`. Edit this file to customize your portfolio.
+All site configuration is managed through **Keystatic CMS** or by editing content files directly in `src/content/`.
 
-### Basic Information
+### Using Keystatic CMS
 
-```typescript
-export const siteConfig: SiteConfig = {
-  name: "Your Name",
-  title: "Your Professional Title",
-  description: "Brief description of your portfolio",
-  avatar: "../assets/your-avatar.png",
-  location: "Your City, Country",
-  email: "your@email.com",
-  // ...
-};
-```
-
-### Social Links
-
-Add your social media profiles:
-
-```typescript
-socialLinks: {
-  github: "https://github.com/username",
-  linkedin: "https://linkedin.com/in/username",
-  twitter: "https://twitter.com/username",
-  bluesky: "https://bsky.app/profile/username",
-  instagram: "https://instagram.com/username",
-  youTube: "https://youtube.com/@username",
-  codetips: "https://codetips.cloud/u/username",
-}
-```
+1. Start the development server: `npm run dev`
+2. Navigate to `http://localhost:4321/keystatic`
+3. Edit **General Settings** to configure:
+   - Theme selector (dropdown vs toggle)
+   - Section visibility
+   - Extra links (FAB & Dock)
 
 ### Section Visibility
 
-Control which sections appear on your homepage:
+Control which sections appear on your homepage through **General Settings** in Keystatic:
 
-```typescript
-sections: {
-  about: true,      // About section
-  projects: true,   // Projects showcase
-  blog: true,       // Latest blog posts (shows 3 most recent)
-  work: true,       // Work experience timeline
-  education: true,  // Education history
-  hackathons: true, // Hackathon participation
-  contact: true,    // Contact section
-}
-```
+- About section
+- Projects showcase (shows up to 3 featured projects)
+- Blog posts (shows 3 most recent)
+- Work experience timeline
+- Education history
+- Hackathon participation
+- Contact section
 
-Set any section to `false` to hide it. The Hero section is always visible.
+The Hero section is always visible.
 
 ### Theme Settings
 
-Choose between a theme selector dropdown or a simple light/dark toggle:
-
-```typescript
-enableThemeSelector: true  // true = dropdown with 6 themes, false = toggle
-```
+Choose between a theme selector dropdown or a simple light/dark toggle in General Settings.
 
 **Available Themes**: light, dark, synthwave, retro, valentine, dim
 
-### Extra Links (FAB Flower)
+### Extra Links (FAB Flower & Dock)
 
-Configure the floating action button menu:
+Configure the floating action button (desktop) and mobile dock navigation:
 
-```typescript
-extraLinks: {
-  enable: true,
-  links: [
-    { link: "/blog/guide", icon: BookOpen, label: "Guide" },
-    { link: "/resume.pdf", icon: FileUser, label: "Resume" },
-    // Add more links...
-  ],
-}
+```yaml
+extraLinks:
+  - link: /blog/guide
+    icon: BookOpen
+    label: Guide
+    displayOn: both    # Options: both, dock, fab
+  - link: /resume.pdf
+    icon: FileText
+    label: Resume
+    displayOn: fab     # Only show on desktop FAB
 ```
+
+The `displayOn` option controls where each link appears:
+- `both` - Shows on both FAB (desktop) and Dock (mobile)
+- `fab` - Only shows on the floating action button (desktop)
+- `dock` - Only shows on the bottom dock (mobile)
 
 ## 📂 Project Structure
 
@@ -161,7 +140,8 @@ bloomfolio/
 │   │   ├── Blog.astro
 │   │   ├── BlogCard.astro
 │   │   ├── Contact.astro
-│   │   ├── FabFlower.astro
+│   │   ├── Dock.astro        # Mobile bottom navigation
+│   │   ├── FabFlower.astro   # Desktop floating action button
 │   │   ├── Hackathons.astro
 │   │   ├── Hero.astro
 │   │   ├── ProjectCard.astro
@@ -193,8 +173,7 @@ bloomfolio/
 │   │       ├── index.astro
 │   │       └── [...slug].astro
 │   ├── styles/
-│   │   └── global.css # Tailwind + DaisyUI
-│   ├── config.ts      # Site configuration
+│   │   └── global.css # Tailwind + DaisyUI + Typography
 │   └── content.config.ts # Content schemas
 ├── astro.config.mjs   # Astro configuration
 ├── package.json
@@ -331,6 +310,7 @@ Create a new file in `src/content/projects/`:
 
 ```markdown
 ---
+featured: true  # Show on homepage (max 3 featured projects)
 title: "Project Name"
 description: "Brief description"
 image: "./screenshot.png"
@@ -344,6 +324,8 @@ sourceLink: "https://github.com/..."  # Optional
 Detailed project description...
 ```
 
+Set `featured: true` to display the project on the homepage. Up to 3 featured projects are shown, sorted by most recent.
+
 #### Work Experience
 
 Create a new file in `src/content/work/`:
@@ -352,14 +334,18 @@ Create a new file in `src/content/work/`:
 ---
 title: "Company Name"
 subtitle: "Job Title"
+location: "City, Country"  # Optional
 startDate: "2020-01-15"
 endDate: "2023-06-30"  # Optional (omit for current position)
 logo: "https://company-logo-url.com"  # Optional
 link: "https://company-website.com"   # Optional
+skills: ["React", "TypeScript", "Node.js"]  # Optional
 ---
 
 Job description and achievements...
 ```
+
+The timeline displays duration automatically and skills are shown in modal dialogs.
 
 #### Education
 
@@ -410,11 +396,12 @@ linkedinUrl: https://linkedin.com/in/username
 # ... other social links
 ```
 
-**About** (`src/content/about/about.md`):
+**About** (`src/content/about/index.md`):
 ```markdown
 ---
 title: "About Me"
 photo: "./photo.png"
+link: "https://linkedin.com/in/username"  # Optional - used for "More Work Experience" button
 ---
 
 Your about content with **Markdown** formatting...
@@ -509,12 +496,18 @@ The configuration automatically detects which mode to use based on environment v
 
 ### Changing Themes
 
-Edit `src/config.ts`:
+Edit theme settings via Keystatic CMS at `/keystatic` or directly in `src/content/general/index.yaml`:
 
-```typescript
-enableThemeSelector: true  // Dropdown with 6 themes
-// OR
-enableThemeSelector: false  // Simple light/dark toggle
+```yaml
+enableThemeSelector: true  # Dropdown with 6 themes (false = simple toggle)
+```
+
+To change available themes, edit `src/styles/global.css`:
+
+```css
+@plugin "daisyui" {
+  themes: light --default, dark --prefersdark, synthwave, retro, valentine, dim;
+}
 ```
 
 ### Adding Custom Styles
@@ -523,7 +516,8 @@ Add custom CSS in component `<style>` tags or extend `src/styles/global.css`:
 
 ```css
 @import "tailwindcss";
-@plugin "daisyui";
+@plugin "@tailwindcss/typography";
+@plugin "daisyui" { ... };
 
 /* Your custom styles here */
 ```
@@ -532,7 +526,8 @@ Add custom CSS in component `<style>` tags or extend `src/styles/global.css`:
 
 1. Create a new component in `src/components/`
 2. Import and add to `src/pages/index.astro`
-3. Optionally add a toggle in `src/config.ts`
+3. Add a visibility toggle in `keystatic.config.ts` (general singleton)
+4. Update `src/content.config.ts` schema to match
 
 ## 🚀 Deployment
 
@@ -577,9 +572,10 @@ Bloomfolio works with any static hosting platform that supports Node.js builds:
 
 - **[Astro 5](https://astro.build)** - Static site generator
 - **[Tailwind CSS 4](https://tailwindcss.com)** - Utility-first CSS framework
+- **[Tailwind Typography](https://tailwindcss.com/docs/typography-plugin)** - Beautiful prose styling
 - **[DaisyUI 5](https://daisyui.com)** - Component library for Tailwind
 - **[TypeScript](https://www.typescriptlang.org/)** - Type safety
-- **[MDX](https://mdxjs.com/)** - Enhanced Markdown
+- **[Markdoc](https://markdoc.dev/)** - Enhanced Markdown with components
 - **[Keystatic](https://keystatic.com)** - Git-based CMS for content management
 - **[Lucide Icons](https://lucide.dev/)** - Icon library
 

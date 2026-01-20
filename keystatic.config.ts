@@ -153,6 +153,16 @@ export default config({
               description: "Label shown on hover",
               validation: { isRequired: true },
             }),
+            displayOn: fields.select({
+              label: "Display On",
+              description: "Where this link should be displayed",
+              options: [
+                { label: "Both (Dock & Fab)", value: "both" },
+                { label: "Only Dock (Mobile)", value: "dock" },
+                { label: "Only Fab (Desktop)", value: "fab" },
+              ],
+              defaultValue: "both",
+            }),
           }),
           {
             label: "Extra Links",
@@ -265,6 +275,10 @@ export default config({
           label: "Position",
           description: "Job title/role",
         }),
+        location: fields.text({
+          label: "Location",
+          description: "Country or city (e.g., 'Brazil', 'Remote')",
+        }),
         startDate: fields.date({
           label: "Start Date",
           validation: { isRequired: true },
@@ -287,6 +301,11 @@ export default config({
           label: "Description",
           description: "Job responsibilities and achievements",
           extension: "md",
+        }),
+        skills: fields.array(fields.text({ label: "Skill" }), {
+          label: "Skills/Technologies",
+          itemLabel: (props) => props.value,
+          description: "Technologies and tools used in this role",
         }),
       },
     }),
@@ -341,6 +360,11 @@ export default config({
         contentField: "content",
       },
       schema: {
+        featured: fields.checkbox({
+          label: "Featured Project",
+          description: "Show this project on the homepage",
+          defaultValue: false,
+        }),
         title: fields.slug({
           name: { label: "Project Name" },
         }),

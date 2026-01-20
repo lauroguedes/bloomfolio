@@ -22,44 +22,64 @@ const { hero } = Astro.props;
 ---
 
 <section class="hero min-h-screen">
-  <div class="hero-content flex-col lg:flex-row-reverse max-w-7xl gap-8">
-    <div class="avatar">
-      <div
-        class="w-48 ring-primary ring-offset-base-100 rounded-full ring-2 ring-offset-2"
-      >
-        {typeof hero.avatar === 'string' ? (
-          <img src={hero.avatar} alt={hero.name} />
-        ) : (
-          <Image src={hero.avatar} alt={hero.name} />
-        )}
-      </div>
+  <div class="hero-content flex-col lg:flex-row-reverse max-w-7xl">
+    <div class="hover-3d">
+      <!-- content -->
+      <figure class="max-w-100 w-48 lg:w-64 mask mask-squircle">
+        {
+          typeof hero.avatar === "string" ? (
+            <img src={hero.avatar} alt={hero.name} />
+          ) : (
+            <Image src={hero.avatar} alt={hero.name} />
+          )
+        }
+      </figure>
+      <!-- 8 empty divs needed for the 3D effect -->
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
     </div>
-    <div class="max-w-2xl">
-      <h1 class="text-5xl font-bold mb-4">
+    <div class="max-w-2xl text-center lg:text-left">
+      <h1 class="text-4xl lg:text-5xl font-bold mb-4">
         Hi, I'm {hero.name}
       </h1>
-      <p class="text-xl text-base-content/80 mb-2">{hero.title}</p>
-      {hero.location && <p class="text-base-content/60 mb-4">{hero.location}</p>}
+      <p class="skeleton skeleton-text text-xl text-base-content/80 mb-2">
+        {hero.title}
+      </p>
+      {
+        hero.location && (
+          <p class="text-base-content/60 mb-4">{hero.location}</p>
+        )
+      }
       <p class="text-lg leading-relaxed mb-6">
         {hero.description}
       </p>
-      <div class="flex gap-4">
-        {hero.socialLinks.map((link) => {
-          const IconComponent = getIcon(link.icon as any);
-          return (
-            <div class="tooltip tooltip-top" data-tip={link.label}>
-              <a
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="btn btn-circle btn-ghost"
-                aria-label={link.label}
-              >
-                <IconComponent class="size-6" />
-              </a>
-            </div>
-          );
-        })}
+      <div
+        class="grid grid-cols-4 gap-2 justify-items-center lg:flex lg:gap-4 lg:justify-start"
+      >
+        {
+          hero.socialLinks.map((link) => {
+            const IconComponent = getIcon(link.icon as any);
+            return (
+              <div class="tooltip tooltip-top" data-tip={link.label}>
+                <a
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn btn-circle btn-primary lg:btn-ghost"
+                  aria-label={link.label}
+                >
+                  <IconComponent class="size-6" />
+                </a>
+              </div>
+            );
+          })
+        }
       </div>
     </div>
   </div>

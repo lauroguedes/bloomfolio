@@ -37,10 +37,12 @@ const work = defineCollection({
     z.object({
       title: z.string(),
       subtitle: z.string(),
+      location: z.string().optional(),
       startDate: z.coerce.date(),
       endDate: z.coerce.date().optional(),
       logo: image().optional(),
       link: z.string().url().optional(),
+      skills: z.array(z.string()).optional(),
     }),
 });
 
@@ -69,6 +71,7 @@ const projects = defineCollection({
   }),
   schema: ({ image }) =>
     z.object({
+      featured: z.boolean().optional().default(false),
       title: z.string(),
       description: z.string(),
       image: image(),
@@ -145,6 +148,7 @@ const general = defineCollection({
           "Link",
         ]),
         label: z.string(),
+        displayOn: z.enum(["both", "dock", "fab"]).optional().default("both"),
       })
     ),
     showAboutSection: z.boolean(),

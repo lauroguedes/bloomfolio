@@ -30,55 +30,58 @@ const general = generalEntry.data;
     <!-- Hero Section (Always visible) -->
     <Hero hero={heroEntry.data} />
 
-    <!-- About Section -->
-    {
-      general.showAboutSection && (
-        <About
-          title={aboutEntry.data.title}
-          photo={aboutEntry.data.photo}
-          Content={AboutContent}
-          link={aboutEntry.data.link}
-        />
-      )
-    }
+    <!-- All other sections hidden on mobile -->
+    <div class="hidden lg:block">
+      <!-- About Section -->
+      {
+        general.showAboutSection && (
+          <About
+            title={aboutEntry.data.title}
+            photo={aboutEntry.data.photo}
+            Content={AboutContent}
+            link={aboutEntry.data.link}
+          />
+        )
+      }
 
-    <!-- Projects Section -->
-    {general.showProjectsSection && <Projects />}
+      <!-- Projects Section -->
+      {general.showProjectsSection && <Projects />}
 
-    <!-- Blog Section -->
-    {general.showBlogSection && <Blog />}
+      <!-- Blog Section -->
+      {general.showBlogSection && <Blog />}
 
-    <!-- Work Experience Section -->
-    {
-      general.showWorkSection && (
-        <Timeline
-          collection="work"
-          variant="timeline"
-          color="primary"
-          icon={Briefcase}
-          sectionTitle="Work Experience"
-        />
-      )
-    }
+      <!-- Work Experience Section -->
+      {
+        general.showWorkSection && (
+          <Timeline
+            collection="work"
+            variant="timeline"
+            color="primary"
+            icon={Briefcase}
+            sectionTitle="Work Experience"
+          />
+        )
+      }
 
-    <!-- Education Section -->
-    {
-      general.showEducationSection && (
-        <Timeline
-          collection="education"
-          variant="list"
-          color="secondary"
-          backgroundColor="base-300"
-          icon={GraduationCap}
-          sectionTitle="Education"
-        />
-      )
-    }
+      <!-- Education Section -->
+      {
+        general.showEducationSection && (
+          <Timeline
+            collection="education"
+            variant="list"
+            color="secondary"
+            backgroundColor="base-300"
+            icon={GraduationCap}
+            sectionTitle="Education"
+          />
+        )
+      }
 
-    <!-- Hackathons Section -->
-    {general.showHackathonsSection && <Hackathons />}
+      <!-- Hackathons Section -->
+      {general.showHackathonsSection && <Hackathons />}
 
-    <!-- Contact Section -->
-    {general.showContactSection && <Contact />}
+      <!-- Contact Section -->
+      {general.showContactSection && <Contact />}
+    </div>
   </main>
 </Layout>

@@ -6,7 +6,7 @@ description: >-
   programming languages.
 image: '@assets/projects/code-tips-platform/image.png'
 startDate: 2025-06-01
-endDate: 2026-01-11
+endDate: 2026-01-17
 skills:
   - Laravel
   - Inertia JS

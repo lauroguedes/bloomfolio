@@ -1,0 +1,28 @@
+---
+import { getIcon } from "../utils/iconMapper";
+
+interface Props {
+  extraLinks: Array<{
+    link: string;
+    icon: string;
+    label: string;
+    displayOn?: "both" | "dock" | "fab";
+  }>;
+}
+
+const { extraLinks } = Astro.props;
+---
+
+<div class="dock dock-lg bg-neutral text-neutral-content lg:hidden z-50">
+  {
+    extraLinks.map((link) => {
+      const IconComponent = getIcon(link.icon as any);
+      return (
+        <a href={link.link} class="dock-item" aria-label={link.label}>
+          <IconComponent class="size-6" />
+          <span class="dock-label">{link.label}</span>
+        </a>
+      );
+    })
+  }
+</div>

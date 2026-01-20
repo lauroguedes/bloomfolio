@@ -4,10 +4,11 @@ import ProjectCard from "./ProjectCard.astro";
 
 const projectEntries = await getCollection("projects");
 
-// Sort by start date, most recent first
-const sortedProjects = projectEntries.sort(
-  (a, b) => b.data.startDate.getTime() - a.data.startDate.getTime()
-);
+// Filter featured projects, sort by start date (most recent first), limit to 3
+const featuredProjects = projectEntries
+  .filter((project) => project.data.featured === true)
+  .sort((a, b) => b.data.startDate.getTime() - a.data.startDate.getTime())
+  .slice(0, 3);
 ---
 
 <section id="projects" class="py-20 px-4 bg-base-200">
@@ -20,10 +21,26 @@ const sortedProjects = projectEntries.sort(
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {sortedProjects.map((project) => (
-        <ProjectCard project={project} />
-      ))}
+    {
+      featuredProjects.length === 0 ? (
+        <div class="text-center py-12">
+          <p class="text-lg text-base-content/60">
+            No featured projects yet. Check out all projects below.
+          </p>
+        </div>
+      ) : (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {featuredProjects.map((project) => (
+            <ProjectCard project={project} />
+          ))}
+        </div>
+      )
+    }
+
+    <div class="text-center mt-10">
+      <a href="/projects" class="btn btn-primary btn-outline">
+        View All Projects
+      </a>
     </div>
   </div>
 </section>

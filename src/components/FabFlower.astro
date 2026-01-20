@@ -7,13 +7,14 @@ interface Props {
     link: string;
     icon: string;
     label: string;
+    displayOn?: "both" | "dock" | "fab";
   }>;
 }
 
 const { extraLinks } = Astro.props;
 ---
 
-<div class="fab fab-flower">
+<div class="fab fab-flower hidden lg:grid">
   <!-- a focusable div with tabindex is necessary to work on all browsers. role="button" is necessary for accessibility -->
   <div class="tooltip tooltip-top" data-tip="More links">
     <div tabindex="0" role="button" class="btn btn-lg btn-accent btn-circle">

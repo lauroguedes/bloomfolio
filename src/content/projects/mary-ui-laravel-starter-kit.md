@@ -7,7 +7,7 @@ description: >-
   tooling.
 image: '@assets/projects/mary-ui-laravel-starter-kit/image.png'
 startDate: 2024-12-07
-endDate: 2026-01-11
+endDate: 2026-01-17
 skills:
   - Laravel
   - Livewire
@@ -17,6 +17,7 @@ skills:
   - Pest
 demoLink: https://github.com/lauroguedes/mary-ui-starter-kit
 sourceLink: https://github.com/lauroguedes/mary-ui-starter-kit
+featured: true
 ---
 ## Project Overview
 

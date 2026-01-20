@@ -1,5 +1,8 @@
 ---
-import { getCollection, render } from "astro:content";
+import { getCollection, getEntry, render } from "astro:content";
+import { Image } from "astro:assets";
+import { ExternalLink } from "@lucide/astro";
+import SkillBadge from "./SkillBadge.astro";
 
 interface Props {
   collection: "work" | "education";
@@ -27,9 +30,13 @@ const IconComponent = icon;
 // Load collection entries
 const entries = await getCollection(collection);
 
+// Load about content to get the link (for work section button)
+const aboutEntry = await getEntry("about", "index");
+const aboutLink = aboutEntry?.data?.link;
+
 // Sort by start date, most recent first
 const sortedEntries = entries.sort(
-  (a, b) => b.data.startDate.getTime() - a.data.startDate.getTime()
+  (a, b) => b.data.startDate.getTime() - a.data.startDate.getTime(),
 );
 
 function formatPeriod(startDate: Date, endDate?: Date) {
@@ -44,12 +51,37 @@ function formatPeriod(startDate: Date, endDate?: Date) {
   return `${start} - ${end}`;
 }
 
+function calculateDuration(startDate: Date, endDate?: Date): string | null {
+  if (!endDate) return null; // Don't show for "Present"
+
+  const start = new Date(startDate);
+  const end = new Date(endDate);
+
+  // Calculate total months between dates
+  const totalMonths =
+    (end.getFullYear() - start.getFullYear()) * 12 +
+    (end.getMonth() - start.getMonth()) +
+    1; // Add 1 to include both start and end months
+
+  const years = Math.floor(totalMonths / 12);
+  const months = totalMonths % 12;
+
+  // Format the duration string
+  if (years === 0) {
+    return `(${months} mo${months !== 1 ? "s" : ""})`;
+  } else if (months === 0) {
+    return `(${years} yr${years !== 1 ? "s" : ""})`;
+  } else {
+    return `(${years} yr${years !== 1 ? "s" : ""} ${months} mo${months !== 1 ? "s" : ""})`;
+  }
+}
+
 // Render markdown content for each entry
 const entriesWithContent = await Promise.all(
   sortedEntries.map(async (entry) => {
     const { Content } = await render(entry);
     return { entry, Content };
-  })
+  }),
 );
 ---
 
@@ -66,64 +98,159 @@ const entriesWithContent = await Promise.all(
 
     {
       variant === "timeline" ? (
-        <ul class="timeline timeline-vertical timeline-snap-icon">
-          {entriesWithContent.map(({ entry, Content }, index) => (
-            <li>
-              {index > 0 && <hr class="bg-base-100" />}
-              <div class="timeline-middle">
-                <IconComponent class={`size-5 text-${color} mx-3 my-1`} />
-              </div>
-              <div
-                class={`timeline-${index % 2 === 0 ? "start" : "end"} pt-3 mb-10`}
-              >
-                <time
-                  class={`font-mono text-sm text-base-content/70 block italic ${index % 2 === 0 ? "text-end" : ""}`}
+        <>
+          <ul class="timeline timeline-vertical timeline-snap-icon">
+            {entriesWithContent.map(({ entry, Content }, index) => (
+              <li>
+                {index > 0 && <hr class="bg-base-100" />}
+                <div class="timeline-middle">
+                  <IconComponent class={`size-5 text-${color} mx-3 my-1`} />
+                </div>
+                <div
+                  class={`timeline-${index % 2 === 0 ? "start" : "end"} max-w-2xs pt-3 mb-10`}
                 >
-                  {formatPeriod(entry.data.startDate, entry.data.endDate)}
-                </time>
-                <div class="card bg-base-100 shadow-xl mt-2">
-                  <div class="card-body">
-                    <div class="flex items-center gap-4 mb-2">
-                      {entry.data.logo && (
-                        <div class="avatar">
-                          <div class="w-12 mask mask-squircle">
-                            <img src={entry.data.logo} alt={entry.data.title} />
-                          </div>
-                        </div>
-                      )}
-                      <div>
-                        <h3 class="card-title">{entry.data.title}</h3>
-                        <p class={`text-${color} font-semibold`}>
-                          {entry.data.subtitle}
-                        </p>
-                      </div>
-                    </div>
-                    <div class="prose prose-sm max-w-none text-base-content/80">
-                      <Content />
-                    </div>
-                    {entry.data.link && (
-                      <div class="card-actions justify-end mt-4">
-                        <a
-                          href={entry.data.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          class="link link-hover"
-                        >
-                          {collection === "work"
-                            ? "View Company"
-                            : "View Institution"}
-                        </a>
-                      </div>
+                  <time
+                    class={`font-mono text-sm text-base-content/70 block italic ${index % 2 === 0 ? "text-end" : ""}`}
+                  >
+                    {formatPeriod(entry.data.startDate, entry.data.endDate)}
+                    {calculateDuration(
+                      entry.data.startDate,
+                      entry.data.endDate,
+                    ) && (
+                      <span class="ml-1 text-base-content/50">
+                        {calculateDuration(
+                          entry.data.startDate,
+                          entry.data.endDate,
+                        )}
+                      </span>
                     )}
+                  </time>
+                  <div class="card bg-base-100 shadow-xl mt-2">
+                    <div class="card-body">
+                      <div class="flex items-center gap-4">
+                        {entry.data.logo && (
+                          <div class="avatar">
+                            <div class="w-12 mask mask-squircle">
+                              <Image
+                                src={entry.data.logo}
+                                alt={entry.data.title}
+                                inferSize={true}
+                              />
+                            </div>
+                          </div>
+                        )}
+                        <div class="flex-1">
+                          <h3 class="card-title">{entry.data.title}</h3>
+                          <p class={`text-${color} font-semibold`}>
+                            {entry.data.subtitle}
+                          </p>
+                          {entry.data.location && (
+                            <p class="text-sm text-base-content/60">
+                              {entry.data.location}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                      <div class="card-actions justify-end mt-2">
+                        <button
+                          class="btn btn-ghost btn-sm"
+                          onclick={`document.getElementById('modal-${entry.id}').showModal()`}
+                        >
+                          Read more
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
+                {index < entriesWithContent.length - 1 && (
+                  <hr class="bg-base-100" />
+                )}
+              </li>
+            ))}
+          </ul>
+
+          {/* Modals for timeline entries */}
+          {entriesWithContent.map(({ entry, Content }) => (
+            <dialog id={`modal-${entry.id}`} class="modal">
+              <div class="modal-box max-w-2xl">
+                {/* Modal Header */}
+                <div class="flex items-center gap-4 mb-4">
+                  {entry.data.logo && (
+                    <div class="avatar">
+                      <div class="w-16 mask mask-squircle">
+                        <Image
+                          src={entry.data.logo}
+                          alt={entry.data.title}
+                          inferSize={true}
+                        />
+                      </div>
+                    </div>
+                  )}
+                  <div>
+                    <h3 class="font-bold text-xl">{entry.data.title}</h3>
+                    <p class={`text-${color} font-semibold`}>
+                      {entry.data.subtitle}
+                    </p>
+                    {entry.data.location && (
+                      <p class="text-sm text-base-content/60">
+                        {entry.data.location}
+                      </p>
+                    )}
+                    <p class="text-sm text-base-content/70 font-mono italic mt-1">
+                      {formatPeriod(entry.data.startDate, entry.data.endDate)}
+                      {calculateDuration(
+                        entry.data.startDate,
+                        entry.data.endDate,
+                      ) && (
+                        <span class="ml-1 text-base-content/50">
+                          {calculateDuration(
+                            entry.data.startDate,
+                            entry.data.endDate,
+                          )}
+                        </span>
+                      )}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Skills */}
+                {entry.data.skills && entry.data.skills.length > 0 && (
+                  <div class="flex flex-wrap gap-2 mb-4">
+                    {entry.data.skills.map((skill: string) => (
+                      <SkillBadge skill={skill} />
+                    ))}
+                  </div>
+                )}
+
+                {/* Modal Content */}
+                <div class="prose prose-sm max-w-none text-base-content/80">
+                  <Content />
+                </div>
+
+                {/* Modal Footer */}
+                <div class="modal-action">
+                  {entry.data.link && (
+                    <a
+                      href={entry.data.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="btn btn-ghost gap-2"
+                    >
+                      View Company
+                      <ExternalLink class="size-4" />
+                    </a>
+                  )}
+                  <form method="dialog">
+                    <button class="btn">Close</button>
+                  </form>
+                </div>
               </div>
-              {index < entriesWithContent.length - 1 && (
-                <hr class="bg-base-100" />
-              )}
-            </li>
+              <form method="dialog" class="modal-backdrop">
+                <button>close</button>
+              </form>
+            </dialog>
           ))}
-        </ul>
+        </>
       ) : (
         <ul class="list bg-base-100 rounded-box shadow-lg">
           {entriesWithContent.map(({ entry, Content }, index) => (
@@ -135,7 +262,11 @@ const entriesWithContent = await Promise.all(
                       {entry.data.logo && (
                         <div class="avatar">
                           <div class="w-10 mask mask-squircle">
-                            <img src={entry.data.logo} alt={entry.data.title} />
+                            <Image
+                              src={entry.data.logo}
+                              alt={entry.data.title}
+                              inferSize={true}
+                            />
                           </div>
                         </div>
                       )}
@@ -150,12 +281,23 @@ const entriesWithContent = await Promise.all(
 
                     <div class="text-sm text-base-content/70 font-mono whitespace-nowrap">
                       {formatPeriod(entry.data.startDate, entry.data.endDate)}
+                      {calculateDuration(
+                        entry.data.startDate,
+                        entry.data.endDate,
+                      ) && (
+                        <span class="ml-1 text-base-content/50">
+                          {calculateDuration(
+                            entry.data.startDate,
+                            entry.data.endDate,
+                          )}
+                        </span>
+                      )}
                     </div>
                   </div>
                 </summary>
 
                 <div class="collapse-content">
-                  <div class="prose prose-sm max-w-none text-base-content/80">
+                  <div class="prose prose-sm max-w-none">
                     <Content />
                   </div>
                   {entry.data.link && (
@@ -176,6 +318,21 @@ const entriesWithContent = await Promise.all(
             </li>
           ))}
         </ul>
+      )
+    }
+
+    {
+      collection === "work" && variant === "timeline" && aboutLink && (
+        <div class="text-center mt-10">
+          <a
+            href={aboutLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-primary btn-outline"
+          >
+            More my Work Experience
+          </a>
+        </div>
       )
     }
   </div>

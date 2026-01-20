@@ -5,13 +5,14 @@ description: >-
   screenshots for social media with customizable templates and design elements.
 image: '@assets/projects/screencial/image.png'
 startDate: 2023-07-01
-endDate: 2026-01-11
+endDate: 2026-01-17
 skills:
   - Laravel
   - Livewire
   - Stripe
   - Tailwind CSS
 demoLink: https://screencial.art
+featured: true
 ---
 ## Overview
 

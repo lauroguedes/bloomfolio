@@ -17,6 +17,7 @@
     "@keystatic/astro": "^5.0.6",
     "@keystatic/core": "^0.5.48",
     "@lucide/astro": "^0.552.0",
+    "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.1.16",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
