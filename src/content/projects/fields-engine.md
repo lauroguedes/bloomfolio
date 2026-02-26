@@ -17,5 +17,3 @@ Successor to DREAD IT's Fields 2.0.\
 Awesome 3D game engine.
 
 Has Fields 4.1 inside.
-
-hi
