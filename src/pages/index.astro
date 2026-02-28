@@ -11,14 +11,14 @@ import { Briefcase, GraduationCap } from "@lucide/astro";
 import { getEntry, render } from "astro:content";
 
 // Load Hero singleton
-const heroEntry = await getEntry("hero", "index");
+const heroEntry = await getEntry("hero", "index")!;
 
 // Load About singleton
-const aboutEntry = await getEntry("about", "index");
+const aboutEntry = await getEntry("about", "index")!;
 const { Content: AboutContent } = await render(aboutEntry);
 
 // Load General singleton
-const generalEntry = await getEntry("general", "index");
+const generalEntry = await getEntry("general", "index")!;
 const general = generalEntry.data;
 ---
 

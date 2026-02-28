@@ -1,0 +1,27 @@
+---
+
+// Load general singleton for theme controls
+import { getEntry } from "astro:content";
+const generalEntry = await getEntry("general", "index")!;
+const general = generalEntry.data;
+import ThemeToggle from "../components/ThemeToggle.astro";
+import ThemeSelector from "../components/ThemeSelector.astro";
+
+---
+
+<div class="navbar bg-base-100 sticky top-0 z-50">
+  <div class="flex-1">
+    <!-- Avatar Button -->
+    <a href="/" class="btn btn-ghost btn-square mr-2" aria-label="Home">
+      <img src="/src/assets/hero/avatar.png" alt="Milesio Icon" class="w-8 h-8 rounded-full" />
+    </a>
+    <a href="/" class="btn btn-ghost text-xl">Miles Haley</a>
+  </div>
+  <div class="flex-none gap-2">
+    <a href="/projects" class="btn btn-ghost">Projects</a>
+    <a href="/blog" class="btn btn-ghost">Blog</a>
+    <!--<a href="/about" class="btn btn-ghost">About</a> -->
+    <!-- Theme Controls - Fixed Position -->
+    {general.enableThemeSelector ? <ThemeSelector /> : <ThemeToggle />}
+  </div>
+</div>

@@ -1,4 +1,4 @@
-enableThemeSelector: true
+enableThemeSelector: false
 extraLinksEnabled: true
 extraLinks:
   - link: /blog/guides/bloomfolio-complete-guide-building-your-portfolio
@@ -22,5 +22,5 @@ showProjectsSection: true
 showBlogSection: true
 showWorkSection: true
 showEducationSection: true
-showHackathonsSection: true
+showHackathonsSection: false
 showContactSection: true

@@ -1,14 +1,13 @@
 ---
 import "../styles/global.css";
-import ThemeToggle from "../components/ThemeToggle.astro";
-import ThemeSelector from "../components/ThemeSelector.astro";
+import NavBar from "../components/NavBar.astro";
 import FabFlower from "../components/FabFlower.astro";
 import Dock from "../components/Dock.astro";
 import { ClientRouter } from "astro:transitions";
 import { getEntry } from "astro:content";
 
 // Load general singleton
-const generalEntry = await getEntry("general", "index");
+const generalEntry = await getEntry("general", "index")!;
 const general = generalEntry.data;
 
 interface Props {
@@ -17,8 +16,8 @@ interface Props {
 }
 
 const {
-  title = "Bloomfolio Template",
-  description = "A modern portfolio template built with Astro and DaisyUI",
+  title = "Miles Haley Portfolio",
+  description = "Miles Haley's Portfolio built with Astro and DaisyUI",
 } = Astro.props;
 
 // Custom blur-fade animation configuration
@@ -58,6 +57,8 @@ const origin = Astro.url.origin;
     <!-- View Transitions -->
     <ClientRouter />
 
+    <NavBar />
+
     <!-- Open Graph / Social Media -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -72,10 +73,7 @@ const origin = Astro.url.origin;
     <meta name="twitter:image" content={`${origin}/images/og_home.png`} />
   </head>
   <body class="min-h-screen">
-    <!-- Theme Controls - Fixed Position -->
-    <div class="fixed top-4 right-4 z-50">
-      {general.enableThemeSelector ? <ThemeSelector /> : <ThemeToggle />}
-    </div>
+
 
     <slot />
 
